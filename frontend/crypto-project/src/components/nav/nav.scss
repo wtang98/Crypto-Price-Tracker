@@ -1,1 +1,20 @@
-@import "~bootstrap/scss/bootstrap.scss";
+@import '../../assets/styles/styles.scss';
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.nav{
+height: 6vh;
+width: 100vw;
+background-color: $primary-color;
+color: $secondary-color;
+&__img{
+  height: 40px;
+  width: 40px;
+}
+&__icon{
+  font-size: 20px;
+}
+}

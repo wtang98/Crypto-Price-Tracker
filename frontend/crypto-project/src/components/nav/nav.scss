@@ -7,7 +7,9 @@
 
 .nav{
 	height: 6vh;
-	width: 100vw;
+	padding: 0; 
+	width: 100%;
+	max-width: 100%; 
 	background-color: $primary-color;
 	color: $secondary-color;
 	font-family: $font-primary;

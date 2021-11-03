@@ -1,1 +1,22 @@
 @import '../../../assets/styles/styles.scss';
+
+
+.trending{
+    width: 100%;
+    &__title{
+        font-size: 20px;
+        &-icon{
+            color: $primary-color;
+        }
+        &>h3{
+            font-family: $font-primary;
+            color: $primary-color;
+            font-size: 15px;
+            margin: 0;
+        }
+    }
+    &__table{
+        border: 1px solid black;
+        height: 25vh;
+    }
+}

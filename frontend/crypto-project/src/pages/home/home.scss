@@ -1,1 +1,11 @@
-// @import "~bootstrap/scss/bootst rap.scss";
+@import '../../assets/styles/styles.scss';
+
+.home{
+
+    &__trending{
+        width: 96vw;
+    }
+    &__topTen{
+        width: 96vw;
+    }
+}

@@ -1,5 +1,10 @@
 @import "../../assets/styles/styles.scss"; 
 
 .footer {
-  list-style-type: none; 
+	&__text{
+		width: 96vw;
+		border: 1px solid black;
+
+		list-style-type: none;
+	}
 }

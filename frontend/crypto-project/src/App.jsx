@@ -10,7 +10,7 @@ const App = () => {
 			<div className="App">
 				<Home/>
 			</div>
-			<div className = "px-0 m-0 d-flex flex-column justify-content-end flex-grow-1"> 
+			<div className = "px-0 m-0 d-flex flex-column justify-content-end flex-grow-1 align-items-center"> 
 				<Footer/> 
 			</div>
 		</div> 

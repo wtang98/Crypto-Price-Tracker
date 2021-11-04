@@ -5,6 +5,22 @@
 	box-sizing: border-box;
 }
 
+.dropDown{
+	position: absolute;
+	right: 0;
+	top: 5.9vh;
+	width: 100vw;
+	height: 50vh;
+	background-color: $primary-color;
+	&__text{
+		font-size: 22px;
+		margin:8px;
+		&:hover{
+			cursor: pointer;
+		}
+	}
+}
+
 .nav{
 	height: 6vh;
 	padding: 0; 
@@ -16,8 +32,15 @@
 	&__img{
 	height: 40px;
 	width: 40px;
+	margin-left: 2vw;
 	}
-	&__icon{
+	&__burger{
 	font-size: 20px;
+	margin-right: 2vw;
+	.hamburger-react{
+		display: flex;
+		justify-content: end;
+	}
 	}
 }
+

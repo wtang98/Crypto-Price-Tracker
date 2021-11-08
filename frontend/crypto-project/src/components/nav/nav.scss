@@ -15,11 +15,25 @@
 	&__text{
 		font-size: 22px;
 		margin:8px;
+        color: $secondary-color;
+        &:active{
+            text-decoration: none;
+        }
+        &:link{
+            text-decoration: none;
+        }
 		&:hover{
 			cursor: pointer;
 		}
 	}
 }
+
+hr{
+    border-bottom: 1px solid $secondary-color;
+    width: 38px;
+    opacity: 100%;
+}
+
 
 .nav{
 	height: 6vh;
@@ -37,10 +51,6 @@
 	&__burger{
 	font-size: 20px;
 	margin-right: 2vw;
-	.hamburger-react{
-		display: flex;
-		justify-content: end;
-	}
 	}
 }
 

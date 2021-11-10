@@ -1,4 +1,4 @@
-package com.backend.backend.cryptocurrency.utility;
+package com.backend.backend.cryptocurrency.services;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHeaders;
@@ -34,7 +34,7 @@ public class CryptoCurrencyAPI {
         try {
             result = makeAPICall(uri, parameters);
         } catch (IOException e) {
-            System.out.println("Error: cannont access content - " + e.toString());
+            System.out.println("Error: cannot access content - " + e.toString());
         } catch (URISyntaxException e) {
             System.out.println("Error: Invalid URL " + e.toString());
         }
@@ -109,7 +109,7 @@ public class CryptoCurrencyAPI {
         try {
             result = makeAPICall(uri, parameters);
         } catch (IOException e) {
-            System.out.println("Error: cannont access content - " + e.toString());
+            System.out.println("Error: cannot access content - " + e.toString());
         } catch (URISyntaxException e) {
             System.out.println("Error: Invalid URL " + e.toString());
         }

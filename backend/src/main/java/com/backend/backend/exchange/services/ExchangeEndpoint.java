@@ -1,9 +1,5 @@
 package com.backend.backend.exchange.services;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.*;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHeaders;
 import org.apache.http.NameValuePair;
@@ -14,41 +10,79 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class ExchangeEndpoint {
+    private static String apiKey = "b54bcf4d-1bca-4e8e-9a24-22ff2c3d462c";
+    private String uri;
 
-    private static String apiKey = "efc763af-270b-48b4-819e-b77425d036a8";
-
-    public static void main(String[] args) {
-        String uri = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest";
-        List<NameValuePair> paratmers = new ArrayList<NameValuePair>();
-        paratmers.add(new BasicNameValuePair("start","1"));
-        paratmers.add(new BasicNameValuePair("limit","5000"));
-        paratmers.add(new BasicNameValuePair("convert","USD"));
-
+    public JSONObject callMap() throws ParseException {
+        uri = "https://sandbox-api.coinmarketcap.com/v1/exchange/map";
+        String result = "";
+        List<NameValuePair> parameters = new ArrayList<NameValuePair>();
+        parameters.add(new BasicNameValuePair("start", "1"));
+        parameters.add(new BasicNameValuePair("limit", "2"));
         try {
-            String result = makeAPICall(uri, paratmers);
-//            System.out.println(result);
-            JSONArray resultArray = readAPI(result);
-            System.out.println(resultArray);
+            result = makeAPICall(uri, parameters);
         } catch (IOException e) {
-            System.out.println("Error: cannont access content - " + e.toString());
+            System.out.println("Error: cannot access content - " + e.toString());
         } catch (URISyntaxException e) {
             System.out.println("Error: Invalid URL " + e.toString());
-        } catch (ParseException e) {
-            e.printStackTrace();
         }
+        JSONParser parser = new JSONParser();
+        JSONObject object = (JSONObject) parser.parse(result);
+        return object;
+
     }
 
-    public static String makeAPICall(String uri, List<NameValuePair> parameters)
-            throws URISyntaxException, IOException {
-        String response_content = "";
+
+    public JSONObject callListingsLatest() throws ParseException {
+        uri = "https://sandbox-api.coinmarketcap.com/v1/exchange/listings/latest";
+        String result = "";
+        List<NameValuePair> parameters = new ArrayList<NameValuePair>();
+        parameters.add(new BasicNameValuePair("start", "1"));
+        parameters.add(new BasicNameValuePair("limit", "2"));
+        try {
+            result = makeAPICall(uri, parameters);
+        } catch (IOException e) {
+            System.out.println("Error: cannot access content - " + e.toString());
+        } catch (URISyntaxException e) {
+            System.out.println("Error: Invalid URL " + e.toString());
+        }
+        JSONParser parser = new JSONParser();
+        JSONObject object = (JSONObject) parser.parse(result);
+        return object;
+
+    }
+
+    public JSONObject callLatestExchange() throws ParseException {
+        uri = "https://sandbox-api.coinmarketcap.com/v1/exchange/listings/latest";
+        String result = "";
+        List<NameValuePair> parameters = new ArrayList<NameValuePair>();
+        parameters.add(new BasicNameValuePair("start", "1"));
+        parameters.add(new BasicNameValuePair("limit", "2"));
+        try {
+            result = makeAPICall(uri, parameters);
+        } catch (IOException e) {
+            System.out.println("Error: cannot access content - " + e.toString());
+        } catch (URISyntaxException e) {
+            System.out.println("Error: Invalid URL " + e.toString());
+        }
+        JSONParser parser = new JSONParser();
+        JSONObject object = (JSONObject) parser.parse(result);
+        return object;
+
+    }
+
+    public static String makeAPICall(String uri, List<NameValuePair> parameters) throws URISyntaxException, IOException {
+        String response_content;
 
         URIBuilder query = new URIBuilder(uri);
         query.addParameters(parameters);
@@ -69,32 +103,7 @@ public class ExchangeEndpoint {
         } finally {
             response.close();
         }
-        Object obj= response_content;
-//        System.out.println("THE RESPONSE OBJECT" + obj);
+
         return response_content;
-//        return obj;
-
-
-    }
-
-    public static JSONArray readAPI(String response) throws ParseException {
-//        String inline = "";
-//        Scanner scanner = new Scanner(response.);
-//
-//        //Write all the JSON data into a string using a scanner
-//        while (scanner.hasNext()) {
-//            inline += scanner.nextLine();
-//        }
-//
-//        //Close the scanner
-//        scanner.close();
-
-        //Using the JSON simple library parse the string into a json object
-        JSONParser parse = new JSONParser();
-        JSONObject data_obj = (JSONObject) parse.parse(response);
-//        JSONObject obj = (JSONObject) data_obj.get("data");
-        JSONArray jsonArray = (JSONArray) data_obj.get("data");
-//        System.out.println(jsonArray);
-        return jsonArray;
     }
 }

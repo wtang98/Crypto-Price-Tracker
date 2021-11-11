@@ -4,7 +4,9 @@ import Priceslist from '../priceslist/priceslist'
 
 const Pricestable = (props) => {
     const {cryptoData} = props
-    const cryptoDataId = cryptoData.prices.map((cryptoDat) =><React.Fragment ><Priceslist name={cryptoDat.name} price={cryptoDat.price}/></React.Fragment>);
+    const cryptoDataId = cryptoData.map((cryptoDat) => {
+        return <Priceslist cryptoDat={cryptoDat}/>
+    });
     return (
         <div className="pricestable">
             {cryptoDataId}
@@ -13,3 +15,6 @@ const Pricestable = (props) => {
 }
 
 export default Pricestable
+
+// <React.Fragment>
+// </React.Fragment>

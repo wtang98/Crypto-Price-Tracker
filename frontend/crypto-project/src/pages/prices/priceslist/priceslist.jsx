@@ -2,11 +2,11 @@ import React from 'react'
 import './priceslist.scss'
 
 const Priceslist = (props) => {
-    const {price,name}=props
+    const {cryptoDat}=props
     return (
         <div className="priceslist">
-            <p>{price}</p>
-            <p>{name}</p>
+            <p>{cryptoDat.price}</p>
+            <p>{cryptoDat.name}</p>
         </div>
     )
 }

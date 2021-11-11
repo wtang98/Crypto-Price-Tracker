@@ -20,13 +20,15 @@ import java.net.URISyntaxException;
 import java.util.*;
 
 public class CryptoCurrencyAPI {
-    private static String apiKey = "b54bcf4d-1bca-4e8e-9a24-22ff2c3d462c";
+//    private static String apiKey = "b54bcf4d-1bca-4e8e-9a24-22ff2c3d462c";
+    private static String apiKey = "efc763af-270b-48b4-819e-b77425d036a8";
     private String uri;
 
     public CryptoCurrencyAPI(){}
 
     public JSONObject callMap() throws ParseException {
-        uri = "https://sandbox-api.coinmarketcap.com/v1/cryptocurrency/map";
+        // uri = "https://sandbox-api.coinmarketcap.com/v1/cryptocurrency/map";
+        uri = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/map";
         String result = "";
         List<NameValuePair> parameters = new ArrayList<NameValuePair>();
         parameters.add(new BasicNameValuePair("start", "1"));
@@ -46,7 +48,8 @@ public class CryptoCurrencyAPI {
 
 
     public JSONObject callListingsLatest() throws ParseException {
-        uri = "https://sandbox-api.coinmarketcap.com/v1/cryptocurrency/listings/latest";
+//        uri = "https://sandbox-api.coinmarketcap.com/v1/cryptocurrency/listings/latest";
+        uri = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest";
         String result = "";
         List<NameValuePair> parameters = new ArrayList<NameValuePair>();
         parameters.add(new BasicNameValuePair("start","1"));
@@ -65,7 +68,8 @@ public class CryptoCurrencyAPI {
     }
 
     public JSONObject callPricesLatest() throws ParseException {
-        uri = "https://sandbox-api.coinmarketcap.com/v1/cryptocurrency/listings/latest";
+//        uri = "https://sandbox-api.coinmarketcap.com/v1/cryptocurrency/listings/latest";
+        uri = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest";
         String result = "";
         List<NameValuePair> parameters = new ArrayList<NameValuePair>();
         parameters.add(new BasicNameValuePair("start","1"));
@@ -102,7 +106,8 @@ public class CryptoCurrencyAPI {
 
 
     public JSONObject callMetadata() throws ParseException {
-        uri = "https://sandbox-api.coinmarketcap.com/v1/cryptocurrency/info";
+//        uri = "https://sandbox-api.coinmarketcap.com/v1/cryptocurrency/info";
+        uri = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/info";
         String result = "";
         List<NameValuePair> parameters = new ArrayList<NameValuePair>();
         parameters.add(new BasicNameValuePair("id","1"));

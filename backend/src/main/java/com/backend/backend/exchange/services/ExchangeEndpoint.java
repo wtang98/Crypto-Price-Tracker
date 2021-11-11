@@ -20,11 +20,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExchangeEndpoint {
-    private static String apiKey = "b54bcf4d-1bca-4e8e-9a24-22ff2c3d462c";
+    private static String apiKey = "efc763af-270b-48b4-819e-b77425d036a8";
+//    private static String apiKey = "b54bcf4d-1bca-4e8e-9a24-22ff2c3d462c";
     private String uri;
 
     public JSONObject callMap() throws ParseException {
-        uri = "https://sandbox-api.coinmarketcap.com/v1/exchange/map";
+//        uri = "https://sandbox-api.coinmarketcap.com/v1/exchange/map";
+        uri = "https://pro-api.coinmarketcap.com/v1/exchange/map";
         String result = "";
         List<NameValuePair> parameters = new ArrayList<NameValuePair>();
         parameters.add(new BasicNameValuePair("start", "1"));
@@ -44,7 +46,8 @@ public class ExchangeEndpoint {
 
 
     public JSONObject callListingsLatest() throws ParseException {
-        uri = "https://sandbox-api.coinmarketcap.com/v1/exchange/listings/latest";
+//        uri = "https://sandbox-api.coinmarketcap.com/v1/exchange/listings/latest";
+        uri = "https://pro-api.coinmarketcap.com/v1/exchange/listings/latest";
         String result = "";
         List<NameValuePair> parameters = new ArrayList<NameValuePair>();
         parameters.add(new BasicNameValuePair("start", "1"));
@@ -63,7 +66,8 @@ public class ExchangeEndpoint {
     }
 
     public JSONObject callLatestExchange() throws ParseException {
-        uri = "https://sandbox-api.coinmarketcap.com/v1/exchange/listings/latest";
+//        uri = "https://sandbox-api.coinmarketcap.com/v1/exchange/listings/latest";
+        uri = "https://pro-api.coinmarketcap.com/v1/exchange/listings/latest";
         String result = "";
         List<NameValuePair> parameters = new ArrayList<NameValuePair>();
         parameters.add(new BasicNameValuePair("start", "1"));

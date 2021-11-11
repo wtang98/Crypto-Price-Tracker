@@ -1,6 +1,6 @@
-package com.backend.backend.cryptocurrency.CryptoController;
+package com.backend.backend.cryptocurrency.controller;
 
-import com.backend.backend.cryptocurrency.utility.CryptoCurrencyAPI;
+import com.backend.backend.cryptocurrency.services.CryptoCurrencyAPI;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,4 +33,10 @@ public class CryptoController {
     public JSONObject jhk() throws ParseException {
         return api.callMetadata();
     }
+
+    @GetMapping("/prices")
+    public JSONObject dfa() throws ParseException {
+        return api.callPricesLatest();
+    }
+
 }

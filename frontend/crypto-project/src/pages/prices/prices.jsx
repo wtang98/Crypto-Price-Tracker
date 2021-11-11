@@ -4,10 +4,12 @@ import Pricestable from './pricestable/pricestable'
 const Prices = () => {
     const [cryptoData, setCryptoData] = useState([])
 
-    const fetchCryptoData = async () => {
-        await fetch("http://localhost:8080/CryptoCurrency/prices")
+    const fetchCryptoData = () => {
+        fetch("http://localhost:8080/CryptoCurrency/prices")
         .then(response => response.json())
-        .then(jsonData => setCryptoData(jsonData))
+        .then(jsonData => {
+            setCryptoData(jsonData.prices)
+        })
         .catch(err=> console.log("Failed to fetch Crypto data."));
     }
     // const one = cryptoData.prices.slice(0, 1);
@@ -16,7 +18,7 @@ const Prices = () => {
     
     return (
         <div>
-            <Pricestable cryptoData={cryptoData.prices}/>
+            {cryptoData && cryptoData.length > 0 && <Pricestable cryptoData={cryptoData}/> }
         </div>
     )
 }

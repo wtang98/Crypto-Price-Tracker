@@ -3,9 +3,9 @@ import './pricestable.scss'
 import Priceslist from '../priceslist/priceslist'
 
 const Pricestable = (props) => {
-    const {cryptoData} = props
+    const {cryptoData, metaData} = props
     const cryptoDataId = cryptoData.map((cryptoDat) => {
-        return <Priceslist cryptoDat={cryptoDat}/>
+        return <Priceslist cryptoDat={cryptoDat} metaData={metaData}/>
     });
     return (
         <div className="pricestable">
@@ -15,6 +15,3 @@ const Pricestable = (props) => {
 }
 
 export default Pricestable
-
-// <React.Fragment>
-// </React.Fragment>

@@ -2,7 +2,8 @@ import React,{useEffect, useState }  from 'react'
 import Pricestable from './pricestable/pricestable'
 
 const Prices = () => {
-    const [cryptoData, setCryptoData] = useState([])
+    const [cryptoData, setCryptoData] = useState([]);
+    const [metaData, setMetaData] = useState([]);
 
     const fetchCryptoData = () => {
         fetch("http://localhost:8080/CryptoCurrency/prices")
@@ -12,13 +13,21 @@ const Prices = () => {
         })
         .catch(err=> console.log("Failed to fetch Crypto data."));
     }
-    // const one = cryptoData.prices.slice(0, 1);
-    console.log(cryptoData.prices);
+    const fetchCryptoMetaData = () => {
+        fetch("http://localhost:8080/CryptoCurrency/metaData")
+        .then(response => response.json())
+        .then(jsonData => {
+            setMetaData(jsonData.data)
+        })
+        .catch(err=> console.log("Failed to fetch Crypto data."));
+    }
+
     useEffect(()=>{fetchCryptoData()}, []);
+    useEffect(()=>{fetchCryptoMetaData()}, []);
     
     return (
         <div>
-            {cryptoData && cryptoData.length > 0 && <Pricestable cryptoData={cryptoData}/> }
+            {cryptoData && cryptoData.length > 0 && <Pricestable cryptoData={cryptoData} metaData={metaData}/> }
         </div>
     )
 }

@@ -151,10 +151,6 @@ public class CryptoCurrencyAPI {
         List<NameValuePair> parameters = new ArrayList<NameValuePair>();
         parameters.add(new BasicNameValuePair("start","1"));
         parameters.add(new BasicNameValuePair("limit","5"));
-=======
-        parameters.add(new BasicNameValuePair("id","1"));
-
->>>>>>> 091e79db020a7b9afd09af1337e0fd2745bd8491
         try {
             result = makeAPICall(uri, parameters);
         } catch (IOException e) {

@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.enterprise.inject.Produces;
+
 @RestController()
 @RequestMapping("/CryptoCurrency")
 public class CryptoController {
@@ -37,6 +39,16 @@ public class CryptoController {
     @GetMapping("/prices")
     public JSONObject dfa() throws ParseException {
         return api.callPricesLatest();
+    }
+
+    @GetMapping("/trendingLatest")
+    public JSONObject dfsa() throws ParseException {
+        return api.callTrendingLatest();
+    }
+
+    @GetMapping("/trendingGainersAndLosers")
+    public JSONObject dfsaa() throws ParseException {
+        return api.callTrendingGainersAndLosers();
     }
 
 }

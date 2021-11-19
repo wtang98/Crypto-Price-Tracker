@@ -73,7 +73,7 @@ public class CryptoCurrencyAPI {
         String result = "";
         List<NameValuePair> parameters = new ArrayList<NameValuePair>();
         parameters.add(new BasicNameValuePair("start","1"));
-        parameters.add(new BasicNameValuePair("limit","5"));
+        parameters.add(new BasicNameValuePair("limit","30"));
         try {
             result = makeAPICall(uri, parameters);
         } catch (IOException e) {
@@ -111,10 +111,6 @@ public class CryptoCurrencyAPI {
         String result = "";
         List<NameValuePair> parameters = new ArrayList<NameValuePair>();
         parameters.add(new BasicNameValuePair("id","1"));
-        parameters.add(new BasicNameValuePair("id","1027"));
-        parameters.add(new BasicNameValuePair("id","1839"));
-        parameters.add(new BasicNameValuePair("id","825"));
-        parameters.add(new BasicNameValuePair("id","5426"));
 
         try {
             result = makeAPICall(uri, parameters);

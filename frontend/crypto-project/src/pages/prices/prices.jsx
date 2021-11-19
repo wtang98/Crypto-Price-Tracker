@@ -26,7 +26,7 @@ const Prices = () => {
     useEffect(()=>{fetchCryptoMetaData()}, []);
     
     return (
-        <div>
+        <div className="prices">
             {cryptoData && cryptoData.length > 0 && <Pricestable cryptoData={cryptoData} metaData={metaData}/> }
         </div>
     )

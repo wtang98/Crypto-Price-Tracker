@@ -110,8 +110,47 @@ public class CryptoCurrencyAPI {
         uri = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/info";
         String result = "";
         List<NameValuePair> parameters = new ArrayList<NameValuePair>();
-        parameters.add(new BasicNameValuePair("id","1"));
+        parameters.add(new BasicNameValuePair("id","1,2,3,4,5"));
+        try {
+            result = makeAPICall(uri, parameters);
+        } catch (IOException e) {
+            System.out.println("Error: cannot access content - " + e.toString());
+        } catch (URISyntaxException e) {
+            System.out.println("Error: Invalid URL " + e.toString());
+        }
 
+        JSONParser parser = new JSONParser();
+        JSONObject object = (JSONObject) parser.parse(result);
+        return object;
+    }
+
+    public JSONObject callTrendingLatest() throws ParseException {
+//        uri = "https://sandbox-api.coinmarketcap.com/v1/cryptocurrency/info";
+        uri = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/trending/latest";
+        String result = "";
+        List<NameValuePair> parameters = new ArrayList<NameValuePair>();
+        parameters.add(new BasicNameValuePair("start","1"));
+        parameters.add(new BasicNameValuePair("limit","5"));
+        try {
+            result = makeAPICall(uri, parameters);
+        } catch (IOException e) {
+            System.out.println("Error: cannot access content - " + e.toString());
+        } catch (URISyntaxException e) {
+            System.out.println("Error: Invalid URL " + e.toString());
+        }
+
+        JSONParser parser = new JSONParser();
+        JSONObject object = (JSONObject) parser.parse(result);
+        return object;
+    }
+
+    public JSONObject callTrendingGainersAndLosers() throws ParseException {
+//        uri = "https://sandbox-api.coinmarketcap.com/v1/cryptocurrency/trending/gainers-losers";
+        uri = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/trending/gainers-losers";
+        String result = "";
+        List<NameValuePair> parameters = new ArrayList<NameValuePair>();
+        parameters.add(new BasicNameValuePair("start","1"));
+        parameters.add(new BasicNameValuePair("limit","5"));
         try {
             result = makeAPICall(uri, parameters);
         } catch (IOException e) {

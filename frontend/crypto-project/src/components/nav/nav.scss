@@ -8,9 +8,9 @@
 .dropDown{
 	position: absolute;
 	right: 0;
-	top: 5.9vh;
+	top: 49px;
 	width: 100vw;
-	height: 50vh;
+	height: 45vh;
 	background-color: $primary-color;
 	&__text{
 		font-size: 22px;
@@ -36,10 +36,9 @@ hr{
 
 
 .nav{
-	height: 6vh;
+	height: 50px;
 	padding: 0; 
-	width: 100%;
-	max-width: 100%; 
+	min-width: 100%;
 	background-color: $primary-color;
 	color: $secondary-color;
 	font-family: $font-primary;
@@ -48,9 +47,11 @@ hr{
 	width: 40px;
 	margin-left: 2vw;
 	}
+	&__header{
+		color: $secondary-color;
+	}
 	&__burger{
 	font-size: 20px;
-	margin-right: 2vw;
 	}
 }
 

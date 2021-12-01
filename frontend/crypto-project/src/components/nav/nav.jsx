@@ -29,12 +29,12 @@ const Nav = (props) => {
         )
     }
     return (
-        <div className="nav d-flex align-items-center">
-            <Link to="/">
-                <img src={Logo} alt="" className=" col-2 nav__img"/>
+        <div className="nav d-flex align-items-center justify-content-between">
+            <Link to="/" className="d-flex" style={{ textDecoration: 'none' }}>
+                <img src={Logo} alt="" className="nav__img"/>
+                <h2 className="px-2 nav__header">The Crypto Files</h2>
             </Link>
-            <h2 className=" col-9 px-2 nav__header">The Crypto Files</h2>
-            <div className="col-1 nav__burger ">
+            <div className="nav__burger ">
                 <Hamburger
                 onToggle={toggled => {
                         if (toggled) {

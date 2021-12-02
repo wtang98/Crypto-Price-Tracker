@@ -2,17 +2,22 @@ import React, { useState } from "react";
 import './nav.scss'
 import Logo from '../../assets/images/Screenshot 2021-11-03 at 11.32.23.png'
 import { Squash as Hamburger } from 'hamburger-react'
+import { Button } from '@material-ui/core';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { Link, useNavigate } from "react-router-dom";
+import { auth } from "../../jses/firebase";
+import { useStateValue } from "../../jses/stateprovider";
 
 const Nav = (props) => {
-    const {prices, exchange, home} = props
-    
-    const [openMenu, setOpenMenu] = useState(false);
-    
-    const navigate = useNavigate();
     AOS.init();
+    const {prices, exchange, home, login} = props
+    const [openMenu, setOpenMenu] = useState(false);
+    const navigate = useNavigate();
+    const [{basket, user}, dispatch] = useStateValue();
+    const name = user?.email.split('@');
+
+
     const menuDropDown = () => {
         return (
             <div className = "dropDown d-flex justify-content-center align-items-center flex-column" data-aos="zoom-out-down-right">
@@ -35,6 +40,9 @@ const Nav = (props) => {
                 <h2 className="px-2 nav__header">The Crypto Files</h2>
             </Link>
             <div className="nav__burger ">
+                <Button onClick={e=> navigate('/login')} className="nav__login">
+                    Sign In
+                </Button>
                 <Hamburger
                 onToggle={toggled => {
                         if (toggled) {

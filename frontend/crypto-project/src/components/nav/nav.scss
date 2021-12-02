@@ -6,6 +6,7 @@
 }
 
 .dropDown{
+	z-index: 9999999999999999999;
 	position: absolute;
 	right: 0;
 	top: 49px;
@@ -38,20 +39,31 @@ hr{
 .nav{
 	height: 50px;
 	padding: 0; 
-	min-width: 100%;
+	min-width: 98vw;
 	background-color: $primary-color;
 	color: $secondary-color;
 	font-family: $font-primary;
 	&__img{
-	height: 40px;
-	width: 40px;
-	margin-left: 2vw;
+		height: 40px;
+		width: 40px;
+		margin-left: 2vw;
 	}
 	&__header{
 		color: $secondary-color;
 	}
 	&__burger{
-	font-size: 20px;
+		display: flex;
+		font-size: 20px;
+		margin-right: 1.5vw;
+		&>button{
+			color: $secondary-color;
+			margin-right: 10px;
+			font-family: $font-primary;
+			&:hover{
+				background-color: $secondary-color;
+				color: $primary-color;
+			}
+		}
 	}
 }
 

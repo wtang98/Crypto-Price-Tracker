@@ -32,7 +32,7 @@ const App = () => {
 
 	return (
 		<BrowserRouter>
-			<div className = "px-0 m-0 d-flex flex-column justify-content-start app"> 
+			<div className="px-0 m-0 d-flex flex-column justify-content-start app"> 
 				<Routes>
 					<Route path="/prices" element={[<Nav prices={true}/>,<Prices/>]}/>
 					<Route path="/login" element={[<Nav login={true}/>, <Login/>]}/>

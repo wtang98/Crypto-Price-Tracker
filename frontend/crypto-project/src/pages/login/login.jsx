@@ -30,24 +30,28 @@ const Login = () => {
                 type: actionTypes.SET_USER,
                 user: result.user,
             })
+            navigate("/")
         })
         .catch((error) => alert(error.message));
     }
 
     return (
         <div className="login">
-            <h1>Login</h1>
-            <form action="">
-                <h6>Email</h6>
-                <input type="text" value={email} onChange={e=> setEmail(e.target.value)}/>
-                
-                <h6>Password</h6>
-                <input type="text" value={password} onChange={e=> setPassword(e.target.value)}/>
-            </form>
-            <Button onClick={signIn}>Sign in</Button>
-            <Button  type="submit" onClick={signInGoogle}>
-                Sign in with Google
-            </Button>
+            <div className="login__container">
+                <h1>Sign In</h1>
+                <form action="">
+                    <h6>Email</h6>
+                    <input type="text" value={email} onChange={e=> setEmail(e.target.value)}/>
+                    
+                    <h6>Password</h6>
+                    <input type="password" value={password} onChange={e=> setPassword(e.target.value)}/>
+                </form>
+                <Button onClick={signIn}>Sign in</Button>
+                <Button  type="submit" onClick={signInGoogle}>
+                    Sign in with Google
+                </Button>
+                <Button onClick={e=>navigate("/signup")}>Create an account</Button>
+            </div>
         </div>
     )
 }

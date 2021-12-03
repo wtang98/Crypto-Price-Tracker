@@ -15,7 +15,13 @@ const Nav = (props) => {
     const [openMenu, setOpenMenu] = useState(false);
     const navigate = useNavigate();
     const [{basket, user}, dispatch] = useStateValue();
-    const name = user?.email.split('@');
+    const name = user?.email.split("@");
+
+    const handleAuth = () => {
+        if(user){
+            auth.signOut();
+        }
+    }
 
 
     const menuDropDown = () => {
@@ -40,8 +46,8 @@ const Nav = (props) => {
                 <h2 className="px-2 nav__header">The Crypto Files</h2>
             </Link>
             <div className="nav__burger ">
-                <Button onClick={e=> navigate('/login')} className="nav__login">
-                    Sign In
+                <Button onClick={e=> !user ? navigate('/login'): handleAuth()} className="nav__login">
+                    {user? `Hello ${name[0]}` : "Sign In"}
                 </Button>
                 <Hamburger
                 onToggle={toggled => {

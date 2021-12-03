@@ -1,7 +1,39 @@
+@import '../../assets/styles/styles.scss'; 
+
 .login{
+    font-family: $font-primary;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 1px solid black;
+    height: 55vh;
+    color: $secondary-color;
+    &__container{
+        width: 25vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        &>form{
+            width: 100%;
+            margin-bottom: 20px;
+            &>input{
+                width: 100%;
+                border: 2px solid $secondary-color;
+                border-radius: 5px;
+                background-color: $primary-color;
+                color: $secondary-color;
+            }
+        }
+        &>button{
+            width: 100%;
+            border: 2px solid $secondary-color;
+            border-radius: 5px;
+            color: $secondary-color;
+            margin: 2px;
+            &:hover{
+                background-color: $secondary-color;
+                color: $primary-color;
+            }
+        }
+    }
 }

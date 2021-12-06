@@ -1,0 +1,48 @@
+@import '../../../../assets/styles/styles.scss';
+
+*{
+    margin: 0;
+    padding: 0;
+}
+.tabNav{    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &__rowSelector{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &-title{
+            color: $secondary-color;
+            margin-bottom: 0;
+            margin-right: 5px;
+        }
+        &-select{
+            background-color: $primary-color;
+            color: $secondary-color;
+            border: 1px solid $secondary-color;
+            border-radius: 10px;
+            margin-right: 5px;
+        }
+    }
+    &__pageIndex{
+        color: $secondary-color;
+        margin-bottom: 0;
+        height: min-content;
+        margin-right: 5px;
+    }
+    &__pageSelector{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: min-content;
+
+        .right, .left{
+            margin-left: 10px;
+            color: $secondary-color;
+        }
+        .right:hover, .left:hover{
+            transform: scale(1.4);
+        }
+    }   
+}

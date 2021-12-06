@@ -6,23 +6,9 @@ const Prices = () => {
     const [metaData, setMetaData] = useState([]);
     const [AllCryptos, setAllCryptos] = useState(cryptoData.length)
     const [cryptoTable, setCryptoTable] = useState([])
-    const [numberOfRows, setNumberOfRows] = useState(8); 
+    const [numberOfRows, setNumberOfRows] = useState(10); 
     const [pageNumber, setPageNumber] = useState(1);  
-
-    const changeNumberOfRows = (e) => {
-        setPageNumber(1);
-        setNumberOfRows(e.target.value);
-    }
-    // console.log(cryptoData);
-
-    const displayCryptos = () => {
-        const firstSliceIndex = numberOfRows*pageNumber-numberOfRows;
-        const secondSliceIndex = numberOfRows*pageNumber;
-        setCryptoTable(cryptoData.slice((firstSliceIndex),(secondSliceIndex)))
-    }
     
-    useEffect(displayCryptos, [cryptoData, pageNumber, numberOfRows]);
-
     const fetchCryptoData = () => {
         fetch("http://localhost:8080/CryptoCurrency/prices")
         .then(response => response.json())
@@ -39,12 +25,47 @@ const Prices = () => {
         })
         .catch(err=> console.log("Failed to fetch Crypto data."));
     }
-
     useEffect(()=>{fetchCryptoData()},()=>{fetchCryptoMetaData()}, []);
+    
+    const changeNumberOfRows = (e) => {
+        setPageNumber(1);
+        setNumberOfRows(e.target.value);
+    }
+    
+    const backAPage = () => {
+        if(pageNumber>1){
+            setPageNumber(pageNumber-1);
+        }
+    }
+    const fowardAPage = () => {
+        if(pageNumber+1<=cryptoData.length/numberOfRows){
+            setPageNumber(pageNumber+1);
+        }
+    }
+
+
+    const displayCryptos = () => {
+        const firstSliceIndex = numberOfRows*pageNumber-numberOfRows;
+        const secondSliceIndex = numberOfRows*pageNumber;
+        setCryptoTable(cryptoData.slice((firstSliceIndex),(secondSliceIndex)))
+    }
+    useEffect(displayCryptos, [cryptoData, pageNumber, numberOfRows]);
+    
+    const firstIndex = numberOfRows*pageNumber-numberOfRows;
+    let secondIndex;
+    cryptoTable.length < numberOfRows ? secondIndex = cryptoTable.length + firstIndex : secondIndex = numberOfRows*pageNumber;
 
     return (
         <div className="prices">
-            {cryptoData && cryptoData.length > 0 && <Pricestable cryptoTable={cryptoTable} metaData={metaData}/> }
+            {cryptoData && cryptoData.length > 0 && <Pricestable 
+            cryptoTable={cryptoTable} 
+            metaData={metaData}
+            firstIndex={firstIndex}
+            secondIndex={secondIndex}
+            changeNumberOfRows={changeNumberOfRows}
+            backAPage={backAPage}
+            fowardAPage={fowardAPage}
+            /> }
         </div>
     )
 }

@@ -47,7 +47,7 @@ const Nav = (props) => {
             </Link>
             <div className="nav__burger ">
                 <Button onClick={e=> !user ? navigate('/login'): handleAuth()} className="nav__login">
-                    {user? `Hello ${name[0]}` : "Sign In"}
+                    <span>{user? `Hello ${name[0]}` : "Sign In"}</span>
                 </Button>
                 <Hamburger
                 onToggle={toggled => {
@@ -62,6 +62,5 @@ const Nav = (props) => {
         </div>
     )
 }
-
 
 export default Nav

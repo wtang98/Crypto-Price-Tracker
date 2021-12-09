@@ -60,11 +60,17 @@ hr{
 			color: $secondary-color;
 			margin-right: 10px;
 			font-family: $font-primary;
+			min-width: 150px;
 			&:hover{
 				background-color: $secondary-color;
 				color: $primary-color;
 			}
-
+			&:hover span{
+				display: none;
+			}
+			&:hover:after{
+				content: "Sign out";
+			}
 		}
 	}
 }

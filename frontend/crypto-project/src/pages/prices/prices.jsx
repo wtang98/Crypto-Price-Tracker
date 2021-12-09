@@ -37,10 +37,12 @@ const Prices = () => {
             setPageNumber(pageNumber-1);
         }
     }
+
     const fowardAPage = () => {
-        if(pageNumber+1<=cryptoData.length/numberOfRows){
-            setPageNumber(pageNumber+1);
-        }
+        let newPageNumber = pageNumber+1;
+        if(newPageNumber-1 !== Math.ceil(AllCryptos/numberOfRows)){
+            setPageNumber(newPageNumber);
+        }   
     }
 
 

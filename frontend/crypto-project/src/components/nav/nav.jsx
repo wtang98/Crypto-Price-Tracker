@@ -12,6 +12,7 @@ import { useStateValue } from "../../jses/stateprovider";
 const Nav = (props) => {
     AOS.init();
     const {prices, exchange, home, login} = props
+    const [isOpen, setOpen] = useState(false)
     const [openMenu, setOpenMenu] = useState(false);
     const navigate = useNavigate();
     const [{basket, user}, dispatch] = useStateValue();
@@ -22,7 +23,6 @@ const Nav = (props) => {
             auth.signOut();
         }
     }
-
 
     const menuDropDown = () => {
         return (
@@ -46,19 +46,15 @@ const Nav = (props) => {
                 <h2 className="px-2 nav__header">The Crypto Files</h2>
             </Link>
             <div className="nav__burger ">
-                <Button onClick={e=> !user ? navigate('/login'): handleAuth()} className="nav__login">
-                    <span>{user? `Hello ${name[0]}` : "Sign In"}</span>
-                </Button>
-                <Hamburger
-                onToggle={toggled => {
-                        if (toggled) {
-                            setOpenMenu(true)
-                        } else {
-                            setOpenMenu(false)
-                        }
-                    }} />
+                {user && <Button className='sign' onClick={e=> !user ? navigate('/login'): handleAuth()}>
+                    <span>{user && `Hello ${name[0]}`}</span>
+                </Button>}
+                {!user && <Button onClick={e=> !user ? navigate('/login'): handleAuth()}>
+                    <span>{"Sign In"}</span>
+                </Button>}
+                <Hamburger toggled={isOpen} toggle={setOpen} />
             </div>
-            {openMenu && menuDropDown()}
+            {isOpen && menuDropDown()}
         </div>
     )
 }
